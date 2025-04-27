@@ -162,8 +162,67 @@
     </div>
 
     <div class="product">
-        <!-- Exemples de produits -->
-        <!-- Tes produits ici -->
+        <!-- 10 produits -->
+        <div class="product-card">
+            <img src="https://via.placeholder.com/250x200.png?text=Produit+1" alt="Produit 1">
+            <h3>Parfum Royal</h3>
+            <p>25 000 CFA</p>
+            <button class="button" onclick="addToCart('Parfum Royal', 25000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/250x200.png?text=Produit+2" alt="Produit 2">
+            <h3>Essence de Sable</h3>
+            <p>20 000 CFA</p>
+            <button class="button" onclick="addToCart('Essence de Sable', 20000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/250x200.png?text=Produit+3" alt="Produit 3">
+            <h3>Désert Mystique</h3>
+            <p>22 000 CFA</p>
+            <button class="button" onclick="addToCart('Désert Mystique', 22000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/250x200.png?text=Produit+4" alt="Produit 4">
+            <h3>Soleil d'Afrique</h3>
+            <p>24 000 CFA</p>
+            <button class="button" onclick="addToCart('Soleil d Afrique', 24000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/250x200.png?text=Produit+5" alt="Produit 5">
+            <h3>Fleur Sauvage</h3>
+            <p>18 000 CFA</p>
+            <button class="button" onclick="addToCart('Fleur Sauvage', 18000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/250x200.png?text=Produit+6" alt="Produit 6">
+            <h3>Bois Sacré</h3>
+            <p>27 000 CFA</p>
+            <button class="button" onclick="addToCart('Bois Sacré', 27000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/250x200.png?text=Produit+7" alt="Produit 7">
+            <h3>Éclat d'Ébène</h3>
+            <p>26 000 CFA</p>
+            <button class="button" onclick="addToCart('Éclat d Ébène', 26000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/250x200.png?text=Produit+8" alt="Produit 8">
+            <h3>Brume Tropicale</h3>
+            <p>19 500 CFA</p>
+            <button class="button" onclick="addToCart('Brume Tropicale', 19500)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/250x200.png?text=Produit+9" alt="Produit 9">
+            <h3>Ambre du Sahel</h3>
+            <p>23 500 CFA</p>
+            <button class="button" onclick="addToCart('Ambre du Sahel', 23500)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/250x200.png?text=Produit+10" alt="Produit 10">
+            <h3>Vent d'Harmattan</h3>
+            <p>21 000 CFA</p>
+            <button class="button" onclick="addToCart('Vent d Harmattan', 21000)">Ajouter au panier</button>
+        </div>
     </div>
 
     <div class="cart" id="cart">
@@ -215,12 +274,11 @@
                 total += item.price * item.quantity;
             });
             message += "\nTotal : " + total.toLocaleString('fr-FR', { minimumFractionDigits: 2 }) + " CFA";
-            
+
             var phoneNumber = "212722576589";
             var whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
             window.open(whatsappUrl, "_blank");
 
-            // Affiche un message "Merci" après
             document.getElementById("thankYouMessage").style.display = "block";
         }
     </script>
