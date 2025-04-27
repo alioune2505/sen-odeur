@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sen’Odeur - Parfums Uniques</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(to right, #d4af37, #8c7853);
+            color: white;
+        }
+        .header h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        .header p {
+            font-size: 1.3em;
+            margin-top: 10px;
+        }
+        .presentation {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #000;
+            color: #d4af37; /* Doré */
+        }
+        .presentation h2 {
+            font-size: 2em;
+            color: #d4af37;
+        }
+        .presentation p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.6;
+        }
+        .product {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background: #f8f8f8;
+            padding: 40px 20px;
+        }
+        .product-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 260px;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+            border: 2px solid #d4af37; /* Doré */
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+        }
+        .product-card img {
+            width: 100%;
+            border-radius: 10px;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-card h3 {
+            font-size: 1.4em;
+            color: #4a4a4a;
+        }
+        .product-card p {
+            font-size: 1em;
+            color: #8c7853;
+            margin: 10px 0;
+        }
+        .button {
+            background-color: #8c7853;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+        .button:hover {
+            background-color: #d4af37;
+        }
+        .cart {
+            position: relative;
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .cart h3 {
+            text-align: center;
+            color: #8c7853;
+        }
+        .cart ul {
+            list-style: none;
+            padding: 0;
+        }
+        .cart ul li {
+            margin: 10px 0;
+            font-size: 1em;
+        }
+        .confirm-btn {
+            background-color: #8c7853;
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            font-size: 1.1em;
+            margin-top: 20px;
+            border: none;
+        }
+        .confirm-btn:hover {
+            background-color: #d4af37;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+        .input-name {
+            margin: 20px 0;
+            padding: 10px;
+            font-size: 1.1em;
+            border-radius: 6px;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Bienvenue chez Sen’Odeur</h1>
+        <p>Explorez l'univers du luxe et de la subtilité olfactive.</p>
+    </div>
+
+    <div class="presentation">
+        <h2>Notre Philosophie</h2>
+        <p>Chez Sen’Odeur, chaque parfum incarne une histoire, une émotion, une essence. Inspirée par les richesses naturelles et culturelles du Sénégal, notre maison vous invite à un voyage sensoriel unique où authenticité, élégance et excellence se rencontrent.</p>
+    </div>
+
+    <div class="product">
+        <div class="product-card">
+            <img src="parfum1.jpg" alt="Élégance">
+            <h3>Élégance</h3>
+            <p>Floral raffiné</p>
+            <p><strong>10,000 CFA</strong></p>
+            <button class="button" onclick="addToCart('Élégance', 10000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum2.jpg" alt="Ambre Royal">
+            <h3>Ambre Royal</h3>
+            <p>Épicé et envoûtant</p>
+            <p><strong>15,000 CFA</strong></p>
+            <button class="button" onclick="addToCart('Ambre Royal', 15000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum3.jpg" alt="Musc Serein">
+            <h3>Musc Serein</h3>
+            <p>Profond et mystérieux</p>
+            <p><strong>12,000 CFA</strong></p>
+            <button class="button" onclick="addToCart('Musc Serein', 12000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum4.jpg" alt="Jasmin d'Or">
+            <h3>Jasmin d'Or</h3>
+            <p>Douceur florale dorée</p>
+            <p><strong>13,000 CFA</strong></p>
+            <button class="button" onclick="addToCart('Jasmin d\'Or', 13000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum5.jpg" alt="Ébène Intense">
+            <h3>Ébène Intense</h3>
+            <p>Boisé et chaleureux</p>
+            <p><strong>14,000 CFA</strong></p>
+            <button class="button" onclick="addToCart('Ébène Intense', 14000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum6.jpg" alt="Soleil de Dakar">
+            <h3>Soleil de Dakar</h3>
+            <p>Agrumes et fraîcheur</p>
+            <p><strong>11,000 CFA</strong></p>
+            <button class="button" onclick="addToCart('Soleil de Dakar', 11000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum7.jpg" alt="Vanille Noire">
+            <h3>Vanille Noire</h3>
+            <p>Gourmand et sophistiqué</p>
+            <p><strong>13,500 CFA</strong></p>
+            <button class="button" onclick="addToCart('Vanille Noire', 13500)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum8.jpg" alt="Rose du Sahel">
+            <h3>Rose du Sahel</h3>
+            <p>Délicatesse et légèreté</p>
+            <p><strong>12,500 CFA</strong></p>
+            <button class="button" onclick="addToCart('Rose du Sahel', 12500)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum9.jpg" alt="Bois de Casamance">
+            <h3>Bois de Casamance</h3>
+            <p>Nature brute et noble</p>
+            <p><strong>14,500 CFA</strong></p>
+            <button class="button" onclick="addToCart('Bois de Casamance', 14500)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum10.jpg" alt="Océan Saphir">
+            <h3>Océan Saphir</h3>
+            <p>Marin frais et apaisant</p>
+            <p><strong>11,500 CFA</strong></p>
+            <button class="button" onclick="addToCart('Océan Saphir', 11500)">Ajouter au panier</button>
+        </div>
+    </div>
+
+    <div class="cart" id="cart">
+        <h3>Mon Panier</h3>
+        <ul id="cart-list"></ul>
+        <label for="name">Entrez votre nom :</label>
+        <input type="text" id="name" class="input-name" placeholder="Votre nom" required>
+        <button class="confirm-btn" onclick="confirmOrder()">Confirmer la commande via WhatsApp</button>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Sen’Odeur - Chaque odeur a son histoire</p>
+    </div>
+
+    <script>
+        var cart = [];
+
+        function addToCart(product, price) {
+            const existingProduct = cart.find(item => item.product === product);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push({ product: product, price: price, quantity: 1 });
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            var cartList = document.getElementById("cart-list");
+            cartList.innerHTML = '';
+            cart.forEach(item => {
+                var li = document.createElement('li');
+                li.textContent = item.product + ' (x' + item.quantity + ') - ' + item.price * item.quantity + ' CFA';
+                cartList.appendChild(li);
+            });
+        }
+
+        function confirmOrder() {
+            var name = document.getElementById("name").value;
+            if (!name) {
+                alert("Veuillez entrer votre nom");
+                return;
+            }
+            var message = "Nom: " + name + "\n";
+            cart.forEach(item => {
+                message += item.product + " (x" + item.quantity + ") - " + item.price * item.quantity + " CFA\n";
+            });
+            var whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(message);
+            window.open(whatsappUrl, "_blank");
+        }
+    </script>
+</body>
+</html>
