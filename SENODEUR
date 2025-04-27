@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sen’Odeur - Parfums Uniques</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(to right, #d4af37, #8c7853);
+            color: white;
+        }
+        .header h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        .header p {
+            font-size: 1.3em;
+            margin-top: 10px;
+        }
+        .presentation {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #000;
+            color: #d4af37; /* Doré */
+        }
+        .presentation h2 {
+            font-size: 2em;
+            color: #d4af37;
+        }
+        .presentation p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.6;
+        }
+        .product {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background: #f8f8f8;
+            padding: 40px 20px;
+        }
+        .product-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 260px;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+            border: 2px solid #d4af37; /* Doré */
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+        }
+        .product-card img {
+            width: 100%;
+            border-radius: 10px;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-card h3 {
+            font-size: 1.4em;
+            color: #4a4a4a;
+        }
+        .product-card p {
+            font-size: 1em;
+            color: #8c7853;
+            margin: 10px 0;
+        }
+        .button {
+            background-color: #8c7853;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+        .button:hover {
+            background-color: #d4af37;
+        }
+        .cart {
+            position: relative;
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .cart h3 {
+            text-align: center;
+            color: #8c7853;
+        }
+        .cart ul {
+            list-style: none;
+            padding: 0;
+        }
+        .cart ul li {
+            margin: 10px 0;
+            font-size: 1em;
+        }
+        .confirm-btn {
+            background-color: #8c7853;
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            font-size: 1.1em;
+            margin-top: 20px;
+            border: none;
+        }
+        .confirm-btn:hover {
+            background-color: #d4af37;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+        .input-name {
+            margin: 20px 0;
+            padding: 10px;
+            font-size: 1.1em;
+            border-radius: 6px;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        /* Menu Responsive */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            padding: 20px;
+        }
+
+        .line {
+            transition: all 0.4s ease;
+            transform-origin: center;
+        }
+
+        .menu-open .line.top {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .menu-open .line.middle {
+            opacity: 0;
+        }
+
+        .menu-open .line.bottom {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Menu Slide + Animation */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu {
+                flex-direction: column;
+                background-color: #8c7853;
+                text-align: center;
+                overflow: hidden;
+                max-height: 0;
+                padding: 0;
+                transition: max-height 0.5s ease, padding 0.5s ease;
+            }
+
+            .menu.show {
+                max-height: 300px;
+                padding: 10px 0;
+            }
+
+            .menu a {
+                color: white;
+                text-decoration: none;
+                margin: 10px 0;
+                display: inline-block;
+                opacity: 0;
+                transform: translateY(-10px);
+                animation: fadeInMenu 0.5s forwards;
+                transition: color 0.3s ease, transform 0.3s ease;
+            }
+
+            .menu.show a:nth-child(1) { animation-delay: 0.1s; }
+            .menu.show a:nth-child(2) { animation-delay: 0.2s; }
+            .menu.show a:nth-child(3) { animation-delay: 0.3s; }
+            .menu.show a:nth-child(4) { animation-delay: 0.4s; }
+
+            .menu a:hover {
+                color: #d4af37;
+                transform: translateY(-3px);
+            }
+        }
+
+        @keyframes fadeInMenu {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Bienvenue chez Sen’Odeur</h1>
+        <p>Explorez l'univers du luxe et de la subtilité olfactive.</p>
+    </div>
+
+    <div class="presentation">
+        <h2>Notre Philosophie</h2>
+        <p>Chez Sen’Odeur, chaque parfum incarne une histoire, une émotion, une essence. Inspirée par les richesses naturelles et culturelles du Sénégal, notre maison vous invite à un voyage sensoriel unique où authenticité, élégance et excellence se rencontrent.</p>
+    </div>
+
+    <!-- Menu Burger -->
+    <div class="menu-toggle" onclick="toggleMenu()" aria-label="Ouvrir le menu">
+        <svg id="burger-icon" width="30" height="30" viewBox="0 0 100 100">
+            <path class="line top" d="M 30,35 H 70" stroke="white" stroke-width="8" stroke-linecap="round"/>
+            <path class="line middle" d="M 30,50 H 70" stroke="white" stroke-width="8" stroke-linecap="round"/>
+            <path class="line bottom" d="M 30,65 H 70" stroke="white" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+    <nav class="menu" id="nav-menu">
+        <a href="#">Accueil</a>
+        <a href="#">Boutique</a>
+        <a href="#">À propos</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div class="product">
+        <div class="product-card">
+            <img src="parfum1.jpg" alt="Élégance">
+            <h3>Élégance</h3>
+            <p>Floral raffiné</p>
+            <p><strong>10,000 CFA</strong></p>
+            <button class="button" onclick="addToCart('Élégance', 10000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum2.jpg" alt="Ambre Royal">
+            <h3>Ambre Royal</h3>
+            <p>Épicé et envoûtant</p>
+            <p><strong>15,000 CFA</strong></p>
+            <button class="button" onclick="addToCart('Ambre Royal', 15000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum3.jpg" alt="Musc Serein">
+            <h3>Musc Serein</h3>
+            <p>Profond et mystérieux</p>
+            <p><strong>12,000 CFA</strong></p>
+            <button class="button" onclick="addToCart('Musc Serein', 12000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum4.jpg" alt="Fleur de Baobab">
+            <h3>Fleur de Baobab</h3>
+            <p>Douceur florale</p>
+            <p><strong>8,000 CFA</strong></p>
+            <button class="button" onclick="addToCart('Fleur de Baobab', 8000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum5.jpg" alt="Soleil d'Afrique">
+            <h3>Soleil d'Afrique</h3>
+            <p>Boisé et chaud</p>
+            <p><strong>14,000 CFA</strong></p>
+            <button class="button" onclick="addToCart('Soleil d\'Afrique', 14000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum6.jpg" alt="Nuit Magique">
+            <h3>Nuit Magique</h3>
+            <p>Magie nocturne</p>
+            <p><strong>13,000 CFA</strong></p>
+            <button class="button" onclick="addToCart('Nuit Magique', 13000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum7.jpg" alt="Jardin Africain">
+            <h3>Jardin Africain</h3>
+            <p>Fruité et léger</p>
+            <p><strong>11,000 CFA</strong></p>
+            <button class="button" onclick="addToCart('Jardin Africain', 11000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum8.jpg" alt="Perle d'Or">
+            <h3>Perle d'Or</h3>
+            <p>Élégance et subtilité</p>
+            <p><strong>16,000 CFA</strong></p>
+            <button class="button" onclick="addToCart('Perle d\'Or', 16000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum9.jpg" alt="Senteur du Désert">
+            <h3>Senteur du Désert</h3>
+            <p>Riche et intense</p>
+            <p><strong>18,000 CFA</strong></p>
+            <button class="button" onclick="addToCart('Senteur du Désert', 18000)">Ajouter au panier</button>
+        </div>
+        <div class="product-card">
+            <img src="parfum10.jpg" alt="Légende de l'Afrique">
+            <h3>Légende de l'Afrique</h3>
+            <p>Emblématique et royal</p>
+            <p><strong>20,000 CFA</strong></p>
+            <button class="button" onclick="addToCart('Légende de l\'Afrique', 20000)">Ajouter au panier</button>
+        </div>
+    </div>
+
+    <div class="cart">
+        <h3>Votre Panier</h3>
+        <ul id="cart-list"></ul>
+        <button class="confirm-btn" onclick="confirmOrder()">Confirmer ma commande</button>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Sen’Odeur - Chaque odeur a son histoire</p>
+    </div>
+
+    <script>
+        const cart = [];
+
+        function addToCart(product, price) {
+            cart.push({product, price});
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartList = document.getElementById("cart-list");
+            cartList.innerHTML = '';
+            cart.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.product} - ${item.price} CFA`;
+                cartList.appendChild(listItem);
+            });
+        }
+
+        function confirmOrder() {
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price;
+            });
+            const message = `Je souhaite passer une commande pour un total de ${total} CFA.`;
+            window.open(`https://wa.me/221XXXXXXXXX?text=${encodeURIComponent(message)}`);
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById("nav-menu");
+            const icon = document.getElementById("burger-icon");
+            menu.classList.toggle("show");
+            icon.classList.toggle("menu-open");
+        }
+    </script>
+</body>
+</html>
