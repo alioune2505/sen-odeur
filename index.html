@@ -30,11 +30,10 @@
             padding: 40px 20px;
             text-align: center;
             background-color: #000;
-            color: #d4af37; /* Doré */
+            color: #d4af37;
         }
         .presentation h2 {
             font-size: 2em;
-            color: #d4af37;
         }
         .presentation p {
             font-size: 1.1em;
@@ -58,7 +57,7 @@
             padding: 20px;
             text-align: center;
             transition: all 0.3s ease-in-out;
-            border: 2px solid #d4af37; /* Doré */
+            border: 2px solid #d4af37;
         }
         .product-card:hover {
             transform: translateY(-10px);
@@ -141,9 +140,17 @@
             width: 100%;
             border: 1px solid #ddd;
         }
+        .thank-you-message {
+            text-align: center;
+            color: green;
+            font-size: 1.2em;
+            margin-top: 20px;
+            display: none;
+        }
     </style>
 </head>
 <body>
+
     <div class="header">
         <h1>Bienvenue chez Sen’Odeur</h1>
         <p>Explorez l'univers du luxe et de la subtilité olfactive.</p>
@@ -155,76 +162,8 @@
     </div>
 
     <div class="product">
-        <div class="product-card">
-            <img src="parfum1.jpg" alt="Élégance">
-            <h3>Élégance</h3>
-            <p>Floral raffiné</p>
-            <p><strong>10,000 CFA</strong></p>
-            <button class="button" onclick="addToCart('Élégance', 10000)">Ajouter au panier</button>
-        </div>
-        <div class="product-card">
-            <img src="parfum2.jpg" alt="Ambre Royal">
-            <h3>Ambre Royal</h3>
-            <p>Épicé et envoûtant</p>
-            <p><strong>15,000 CFA</strong></p>
-            <button class="button" onclick="addToCart('Ambre Royal', 15000)">Ajouter au panier</button>
-        </div>
-        <div class="product-card">
-            <img src="parfum3.jpg" alt="Musc Serein">
-            <h3>Musc Serein</h3>
-            <p>Profond et mystérieux</p>
-            <p><strong>12,000 CFA</strong></p>
-            <button class="button" onclick="addToCart('Musc Serein', 12000)">Ajouter au panier</button>
-        </div>
-        <div class="product-card">
-            <img src="parfum4.jpg" alt="Jasmin d'Or">
-            <h3>Jasmin d'Or</h3>
-            <p>Douceur florale dorée</p>
-            <p><strong>13,000 CFA</strong></p>
-            <button class="button" onclick="addToCart('Jasmin d\'Or', 13000)">Ajouter au panier</button>
-        </div>
-        <div class="product-card">
-            <img src="parfum5.jpg" alt="Ébène Intense">
-            <h3>Ébène Intense</h3>
-            <p>Boisé et chaleureux</p>
-            <p><strong>14,000 CFA</strong></p>
-            <button class="button" onclick="addToCart('Ébène Intense', 14000)">Ajouter au panier</button>
-        </div>
-        <div class="product-card">
-            <img src="parfum6.jpg" alt="Soleil de Dakar">
-            <h3>Soleil de Dakar</h3>
-            <p>Agrumes et fraîcheur</p>
-            <p><strong>11,000 CFA</strong></p>
-            <button class="button" onclick="addToCart('Soleil de Dakar', 11000)">Ajouter au panier</button>
-        </div>
-        <div class="product-card">
-            <img src="parfum7.jpg" alt="Vanille Noire">
-            <h3>Vanille Noire</h3>
-            <p>Gourmand et sophistiqué</p>
-            <p><strong>13,500 CFA</strong></p>
-            <button class="button" onclick="addToCart('Vanille Noire', 13500)">Ajouter au panier</button>
-        </div>
-        <div class="product-card">
-            <img src="parfum8.jpg" alt="Rose du Sahel">
-            <h3>Rose du Sahel</h3>
-            <p>Délicatesse et légèreté</p>
-            <p><strong>12,500 CFA</strong></p>
-            <button class="button" onclick="addToCart('Rose du Sahel', 12500)">Ajouter au panier</button>
-        </div>
-        <div class="product-card">
-            <img src="parfum9.jpg" alt="Bois de Casamance">
-            <h3>Bois de Casamance</h3>
-            <p>Nature brute et noble</p>
-            <p><strong>14,500 CFA</strong></p>
-            <button class="button" onclick="addToCart('Bois de Casamance', 14500)">Ajouter au panier</button>
-        </div>
-        <div class="product-card">
-            <img src="parfum10.jpg" alt="Océan Saphir">
-            <h3>Océan Saphir</h3>
-            <p>Marin frais et apaisant</p>
-            <p><strong>11,500 CFA</strong></p>
-            <button class="button" onclick="addToCart('Océan Saphir', 11500)">Ajouter au panier</button>
-        </div>
+        <!-- Exemples de produits -->
+        <!-- Tes produits ici -->
     </div>
 
     <div class="cart" id="cart">
@@ -233,6 +172,7 @@
         <label for="name">Entrez votre nom :</label>
         <input type="text" id="name" class="input-name" placeholder="Votre nom" required>
         <button class="confirm-btn" onclick="confirmOrder()">Confirmer la commande via WhatsApp</button>
+        <div class="thank-you-message" id="thankYouMessage">Merci pour votre commande ! Nous vous répondrons rapidement.</div>
     </div>
 
     <div class="footer">
@@ -257,7 +197,7 @@
             cartList.innerHTML = '';
             cart.forEach(item => {
                 var li = document.createElement('li');
-                li.textContent = item.product + ' (x' + item.quantity + ') - ' + item.price * item.quantity + ' CFA';
+                li.textContent = item.product + ' (x' + item.quantity + ') - ' + (item.price * item.quantity).toLocaleString('fr-FR') + ' CFA';
                 cartList.appendChild(li);
             });
         }
@@ -268,13 +208,22 @@
                 alert("Veuillez entrer votre nom");
                 return;
             }
-            var message = "Nom: " + name + "\n";
+            var message = "Bonjour Sen’Odeur, je voulais commander. Voici ma commande :\n\n";
+            var total = 0;
             cart.forEach(item => {
-                message += item.product + " (x" + item.quantity + ") - " + item.price * item.quantity + " CFA\n";
+                message += "- " + item.product + " x" + item.quantity + " (" + item.price.toLocaleString('fr-FR') + " CFA)\n";
+                total += item.price * item.quantity;
             });
-            var whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(message);
+            message += "\nTotal : " + total.toLocaleString('fr-FR', { minimumFractionDigits: 2 }) + " CFA";
+            
+            var phoneNumber = "212722576589";
+            var whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
             window.open(whatsappUrl, "_blank");
+
+            // Affiche un message "Merci" après
+            document.getElementById("thankYouMessage").style.display = "block";
         }
     </script>
+
 </body>
 </html>
